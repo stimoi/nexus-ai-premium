@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style>
+			:root {
+				--primary: #00c6ff;
+				--accent: #ff8e53;
+				--text-light: #f4f6f8;
+				--muted: rgba(255, 255, 255, 0.72);
+				--card-bg: rgba(18, 31, 44, 0.86);
+				--border: rgba(255, 255, 255, 0.14);
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				background: linear-gradient(135deg, #0f2027 0%, #203a43 48%, #2c5364 100%);
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-size: 18px;
+				color: var(--text-light);
+				line-height: 1.6;
+			}
+
+			h1, h2, h3 {
+				margin-top: 0;
+				font-weight: 600;
+				color: #ffffff;
+				text-align: center;
+			}
+
+			a {
+				color: var(--primary);
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+
+			a:hover {
+				color: var(--accent);
+			}
+
+			header {
+				text-align: center;
+				padding: 72px 20px 40px;
+			}
+
+			header .tagline {
+				margin: 12px auto 0;
+				max-width: 720px;
+				color: var(--muted);
+			}
+
+			.page {
+				max-width: 1100px;
+				margin: 0 auto 64px;
+				padding: 0 24px 80px;
+				display: flex;
+				flex-direction: column;
+				gap: 32px;
+			}
+
+			.card {
+				background: var(--card-bg);
+				border: 1px solid var(--border);
+				border-radius: 20px;
+				padding: 32px;
+				box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+			}
+
+			.hero {
+				display: grid;
+				gap: 32px;
+				align-items: center;
+				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			}
+
+			.hero figure {
+				margin: 0;
+				overflow: hidden;
+				border-radius: 16px;
+				border: 1px solid var(--border);
+				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+			}
+
+			.hero img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				background: rgba(0, 198, 255, 0.12);
+				color: var(--primary);
+				padding: 8px 16px;
+				border-radius: 999px;
+				font-size: 0.9rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin-bottom: 16px;
+			}
+
+			.button-group {
+				display: flex;
+				gap: 16px;
+				flex-wrap: wrap;
+				margin-top: 24px;
+			}
+
+			.button {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				padding: 12px 20px;
+				border-radius: 999px;
+				border: 1px solid transparent;
+				font-weight: 600;
+				cursor: pointer;
+				transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+			}
+
+			.button.primary {
+				background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+				color: #0b1016;
+				box-shadow: 0 15px 40px rgba(0, 114, 255, 0.35);
+			}
+
+			.button.secondary {
+				background: transparent;
+				color: var(--text-light);
+				border-color: rgba(255, 255, 255, 0.25);
+			}
+
+			.button.disabled,
+			.button[aria-disabled="true"] {
+				cursor: not-allowed;
+				opacity: 0.55;
+				box-shadow: none;
+				background: rgba(255, 255, 255, 0.08);
+				border-color: rgba(255, 255, 255, 0.2);
+				color: rgba(255, 255, 255, 0.7);
+			}
+
+			.button.disabled:hover,
+			.button[aria-disabled="true"]:hover {
+				transform: none;
+				box-shadow: none;
+			}
+
+			.button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+			}
+
+			.two-column {
+				display: grid;
+				gap: 24px;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			}
+
+			dl {
+				display: grid;
+				grid-template-columns: minmax(120px, 180px) 1fr;
+				gap: 12px 18px;
+				margin: 0;
+			}
+
+			dt {
+				font-weight: 600;
+				color: var(--muted);
+			}
+
+			dd {
+				margin: 0;
+			}
+
+			ul {
+				margin: 0;
+				padding-left: 20px;
+			}
+
+			.quote {
+				font-style: italic;
+				color: var(--muted);
+				border-left: 3px solid rgba(255, 255, 255, 0.2);
+				padding-left: 18px;
+				margin: 0;
+			}
+
+			.highlights {
+				display: grid;
+				gap: 18px;
+			}
+
+			.highlight-item {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+				padding: 16px 18px;
+				border-radius: 14px;
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				background: rgba(255, 255, 255, 0.06);
+			}
+
+			footer {
+				text-align: center;
+				color: rgba(255, 255, 255, 0.6);
+				padding: 48px 20px 32px;
+				font-size: 0.95rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<span class="badge">Film culte sous-marin</span>
+			<h1>Empires of the Deep</h1>
+			<p class="tagline">
+				Plongez dans une odyssée aquatique où les légendes grecques rencontrent les royaumes oubliés des sirènes.
+			</p>
+		</header>
+		<main class="page">
+			<section class="hero card">
+				<figure>
+					<img src="empires-of-the-deep.webp" alt="Affiche du film Empires of the Deep">
+				</figure>
+				<div>
+					<p>
+						Dernière superproduction américano-chinoise de fantasy, <strong>Empires of the Deep</strong> nous entraîne dans un monde peuplé de créatures mythiques, de guerriers triés sur le volet et d'une héroïne partagée entre deux civilisations.
+					</p>
+					<p>
+						Tourné aux quatre coins du globe, le film combine prises de vues en décors naturels et effets spéciaux aquatiques jamais vus, le tout soutenu par une bande originale envoûtante signée par un orchestre symphonique.
+					</p>
+				</section>
+
+				<section class="card two-column">
+					<div>
+						<h2>Fiche technique</h2>
+						<dl>
+							<dt>Réalisation</dt>
+							<dd>Jonathan Lawrence, Michael French, Scott Miller</dd>
+							<dt>Genre</dt>
+							<dd>Fantasy épique, aventure</dd>
+							<dt>Durée</dt>
+							<dd>2h18</dd>
+							<dt>Sortie</dt>
+							<dd>2022 (sélection festivals internationaux)</dd>
+							<dt>Production</dt>
+							<dd>Deep Blue Studios &amp; Oceanic Dreamworks</dd>
+							<dt>Bande originale</dt>
+							<dd>Enregistrée avec le Shanghai Film Orchestra</dd>
+						</dl>
+					</div>
+					<div>
+						<h2>Distribution principale</h2>
+						<ul>
+							<li><strong>Olga Kurylenko</strong> — Serena, ambassadrice entre deux mondes</li>
+							<li><strong>Tom Hardy</strong> — Elias, capitaine rebelle des mers Égée</li>
+							<li><strong>Scarlett Johansson</strong> — Amphitrite, reine des sirènes</li>
+							<li><strong>Tony Leung</strong> — Général Ming, visionnaire technophile</li>
+							<li><strong>John Boyega</strong> — Thalron, prince des abysses</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="card">
+					<h2>Notes de production</h2>
+					<div class="highlights">
+						<div class="highlight-item">
+							<h3>Des décors hybrides</h3>
+							<p>Les séquences ont mêlé bassins géants en studio, ruines grecques immergées et tournage au Monténégro pour restituer la lumière méditerranéenne filtrant sous la surface.</p>
+						</div>
+						<div class="highlight-item">
+							<h3>Technologies aquatiques</h3>
+							<p>Une caméra submersible 6K spécialement conçue a permis de filmer des chorégraphies sous-marines complexes avec plus de trente cascadeurs.</p>
+						</div>
+						<div class="highlight-item">
+							<h3>Ambitions musicales</h3>
+							<p>La bande-son alterne chants polyphoniques inspirés des lamentations grecques et synthétiseurs futuristes pour marquer le choc des civilisations.</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="card">
+					<h2>Pourquoi regarder ce film ?</h2>
+					<ul>
+						<li>Une héroïne partagée entre ses origines et son devoir, offrant un arc émotionnel profond.</li>
+						<li>Un affrontement visuel entre mythologie antique et futurisme écologique.</li>
+						<li>Des scènes d'action subaquatiques chorégraphiées comme des ballets contemporains.</li>
+						<li>Une réflexion sur l'exploitation des ressources océaniques et la diplomatie environnementale.</li>
+					</ul>
+					<div class="button-group">
+						<a class="button primary" href="https://www.youtube.com/watch?v=XZ-0ktPWo7Q" target="_blank" rel="noopener noreferrer">Voir la bande-annonce</a>
+						<span class="button secondary disabled" role="button" aria-disabled="true" title="Le film n'est pas encore disponible">Film à venir</span>
+					</div>
+					<p class="note">La sortie en salles est prévue prochainement. Restez à l'affût pour découvrir le long-métrage complet !</p>
+				</section>
+
+				<section class="card">
+					<h2>Ce qu'en disent les critiques</h2>
+					<p class="quote">« Une fresque liquide à la fois spectaculaire et poétique qui redéfinit la fantasy moderne. » — <em>Cinéma &amp; Merveilles</em></p>
+					<p class="quote">« La rencontre de l'épique et de l'écologie, servie par une distribution magnétique et une direction artistique somptueuse. » — <em>Atlantis Review</em></p>
+				</section>
+			</main>
+			<footer>
+				Ce site a été imaginé par Antoine pour sublimer l'univers d'<strong>Empires of the Deep</strong>.
+			</footer>
+		</body>
+	</html>
